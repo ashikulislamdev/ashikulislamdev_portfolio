@@ -1,3 +1,4 @@
+import 'package:ashikulislamdev/widgets/right_sidebar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -6,15 +7,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Row(
-          children: [
-            // right side bar
-            Expanded(flex: 3, child: Container(color: Theme.of(context).colorScheme.primary)),
-            // main content area
-            Expanded(flex: 8, child: Container(color: Theme.of(context).colorScheme.secondary)),
-          ],
-        ),
+      body: Row(
+        children: [
+          // right side bar
+          const Expanded(flex: 3, child: RightSideBar()),
+          // main content area
+          Expanded(flex: 8, child: Container(color: Theme.of(context).colorScheme.secondary)),
+        ],
       ),
     );
   }

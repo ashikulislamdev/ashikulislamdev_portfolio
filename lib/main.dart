@@ -1,9 +1,18 @@
-import 'package:ashikulislamdev/theme/light_mode.dart';
+import 'package:ashikulislamdev/theme/dark_mode.dart';
+import 'package:ashikulislamdev/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ThemeProvider()),
+      ],
+      child: const MyApp()
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ashikul Islam Sawan',
-      theme: lightMode,
+      theme: darkMood,
       home: const HomePage(),
     );
   }
