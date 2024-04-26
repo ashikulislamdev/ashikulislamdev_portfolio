@@ -7,7 +7,7 @@ class SideMenuData {
     MenuModel(icon: Icons.settings_accessibility, title: 'Skills'),
     MenuModel(icon: Icons.design_services, title: 'Service'),
     MenuModel(icon: Icons.work_rounded, title: 'Project'),
-    MenuModel(icon: Icons.contact_emergency, title: 'contact'),
+    MenuModel(icon: Icons.contact_emergency, title: 'Contact'),
   ];
 }
 

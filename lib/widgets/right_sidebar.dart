@@ -18,20 +18,12 @@ class _RightSideBarState extends State<RightSideBar> {
     return SingleChildScrollView(
       physics: const ScrollPhysics(),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // logo
-          // Container(
-          //   height: 320,
-          //   decoration: const BoxDecoration(
-          //     image: DecorationImage(
-          //       image: AssetImage('assets/images/ashikulislamdev-eagle.jpeg'),
-          //       fit: BoxFit.cover,
-          //     ),
-          //   ),
-          //   child: const Center(child: Text("Asikul Islam"),),
-          // ),
           Image.asset(
-            'assets/images/ashikulislamdev-eagle.jpeg', fit: BoxFit.cover, width: double.infinity, height: 320,
+            'assets/images/ashikulislamdev.jpg', 
+            fit: BoxFit.cover, 
+            width: double.infinity,
           ),
           Container(
             color: const Color(0xFF171821),
@@ -73,7 +65,7 @@ class _RightSideBarState extends State<RightSideBar> {
             Text(
               data.menu[index].title,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: Theme.of(context).textTheme.bodyLarge!.fontSize,
                 color: isSelected ? Colors.black : Colors.grey,
                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
               ),
