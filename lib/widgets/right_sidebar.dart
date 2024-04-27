@@ -1,6 +1,8 @@
 import 'package:ashikulislamdev/data/constant.dart';
 import 'package:ashikulislamdev/data/side_menu_data.dart';
+import 'package:ashikulislamdev/providers/menu_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class RightSideBar extends StatefulWidget {
   const RightSideBar({super.key});
@@ -10,7 +12,6 @@ class RightSideBar extends StatefulWidget {
 }
 
 class _RightSideBarState extends State<RightSideBar> {
-  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     final data = SideMenuData();
@@ -21,8 +22,8 @@ class _RightSideBarState extends State<RightSideBar> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Image.asset(
-            'assets/images/ashikulislamdev.jpg', 
-            fit: BoxFit.cover, 
+            'assets/images/ashikulislamdev.jpg',
+            fit: BoxFit.cover,
             width: double.infinity,
           ),
           Container(
@@ -39,20 +40,20 @@ class _RightSideBarState extends State<RightSideBar> {
   }
 
   Widget buildMenuEntry(SideMenuData data, int index) {
-    final isSelected = selectedIndex == index;
+    final selectedIndexProvider = Provider.of<SelectedIndexProvider>(context);
+    final isSelected = selectedIndexProvider.selectedIndex == index;
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(6.0),
-        ),
+        borderRadius: const BorderRadius.all(Radius.circular(6.0)),
         color: isSelected ? selectionColor : Colors.transparent,
       ),
       child: InkWell(
-        onTap: () => setState(() {
-          selectedIndex = index;
-        }),
+        onTap: () {
+          selectedIndexProvider.selectedIndexValue(index);
+          // debugPrint('Selected Index: ${selectedIndexProvider.selectedIndex}');
+        },
         child: Row(
           children: [
             Padding(

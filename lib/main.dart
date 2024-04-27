@@ -1,3 +1,4 @@
+import 'package:ashikulislamdev/providers/menu_provider.dart';
 import 'package:ashikulislamdev/theme/dark_mode.dart';
 import 'package:ashikulislamdev/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
+        ChangeNotifierProvider(create: (context) => SelectedIndexProvider()),
       ],
       child: const MyApp()
     ),
