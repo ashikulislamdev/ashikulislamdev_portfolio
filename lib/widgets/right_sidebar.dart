@@ -22,9 +22,10 @@ class _RightSideBarState extends State<RightSideBar> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Image.asset(
-            'assets/images/ashikulislamdev.jpg',
+            'assets/images/gdg_hangzhou_pc.jpg',
             fit: BoxFit.cover,
             width: double.infinity,
+            
           ),
           Container(
             color: const Color(0xFF171821),

@@ -56,37 +56,50 @@ class HomePage extends StatelessWidget {
               child: const RightSideBar(),
             )
           : null,
-      body: Stack(
-        children: [
-          
-          Row(
-            children: [
-              // right side bar
-              if (isDesktop)
-                const Expanded(
-                  flex: 3,
-                  child: RightSideBar(),
-                ),
-              // main content area
-              Expanded(
-                flex: 8,
-                child: bodyWidget,
-              ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.blueGrey.shade900,
+              Colors.blueGrey.shade800,
+              Colors.blueGrey.shade900,
             ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
-          // drawer icon if not desktop
-          if (!isDesktop)
-            Positioned(
-              top: 10,
-              left: 10,
-              child: IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () {
-                  scaffoldKey.currentState?.openDrawer();
-                },
-              ),
+        ),
+        child: Stack(
+          children: [
+            
+            Row(
+              children: [
+                // right side bar
+                if (isDesktop)
+                  const Expanded(
+                    flex: 3,
+                    child: RightSideBar(),
+                  ),
+                // main content area
+                Expanded(
+                  flex: 8,
+                  child: bodyWidget,
+                ),
+              ],
             ),
-        ],
+            // drawer icon if not desktop
+            if (!isDesktop)
+              Positioned(
+                top: 10,
+                left: 10,
+                child: IconButton(
+                  icon: const Icon(Icons.menu),
+                  onPressed: () {
+                    scaffoldKey.currentState?.openDrawer();
+                  },
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
