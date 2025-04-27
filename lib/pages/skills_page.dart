@@ -56,6 +56,17 @@ class SkillsScreen extends StatelessWidget {
                 Skill(name: 'Unix', level: 0.6),
               ],
             ),
+            SizedBox(height: dSize.height * 0.05),
+            SkillCategory(
+              categoryTitle: 'Otheres',
+              skills: [
+                Skill(name: 'Problem Solving & Team Work', level: 0.9),
+                Skill(name: 'Cyber Security', level: 0.6),
+                Skill(name: 'ML & AI', level: 0.6),
+                Skill(name: 'Video Editing', level: 0.85),
+                Skill(name: 'Graphics Design', level: 0.7)
+              ],
+            ),
           ],
         ),
       ),

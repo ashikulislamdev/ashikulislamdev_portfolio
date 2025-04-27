@@ -13,7 +13,7 @@ class TypeWriteWidget extends StatefulWidget {
 class _TypeWriteWidgetState extends State<TypeWriteWidget> with SingleTickerProviderStateMixin{
 
   // final typingText = "I am a Flutter Developer";
-  final List<String> typingTextList = ["Flutter Developer", "Mobile App Developer", "Backend Developer"];
+  final List<String> typingTextList = ["Mobile App Developer", "Web Developer", "Flutter Developer", "Backend Developer"];
   int currentIndex = 0;
   late AnimationController animationController;
   late Animation<int> typingTextAnimation;

@@ -54,7 +54,8 @@ class HomePageBody extends StatelessWidget {
                     const TypeWriteWidget(),
                     SizedBox(height: dSize.height * 0.009),
                     Text(
-                      'I\'m a passionate flutter developer, and I\'m very dedicated to my work.', 
+                      // 'I\'m a passionate flutter developer, and I\'m very dedicated to my work.', 
+                      "Over 5 years of IT industry experience, including two and half years in Flutter application development, with a solid academic foundation in Computer Science. Skilled in all stages of the development cycle for both dynamic and static projects. Currently focusing on ML & AI, with hands-on experience developing intelligent & impactful solutions.",
                       textAlign: TextAlign.center,  
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.inversePrimary,

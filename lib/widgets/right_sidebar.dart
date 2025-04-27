@@ -22,7 +22,7 @@ class _RightSideBarState extends State<RightSideBar> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Image.asset(
-            'assets/images/gdg_hangzhou_pc.jpg',
+            'assets/images/ashikulislamdev.jpg',
             fit: BoxFit.cover,
             width: double.infinity,
             

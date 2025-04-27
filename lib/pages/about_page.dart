@@ -1,6 +1,9 @@
 import 'package:ashikulislamdev/data/constant.dart';
 import 'package:ashikulislamdev/widgets/common/bg_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/services.dart' show ByteData, rootBundle;
+import 'dart:html' as html;
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -9,6 +12,41 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final dSize = MediaQuery.of(context).size;
     final isMobile = Responsive.isMobile(context);
+    
+    Future<void> downloadCV() async {
+      // Check web
+      if (!kIsWeb) {
+        return;
+      }
+
+      try {
+        // Load the asset
+        const String assetPath = 'assets/CV-Asikul_Islam_Sawan.pdf';
+        final ByteData data = await rootBundle.load(assetPath);
+        final List<int> bytes = data.buffer.asUint8List();
+
+        //Create a Blob from the data
+        final blob = html.Blob([bytes], 'application/pdf'); 
+
+        final url = html.Url.createObjectUrlFromBlob(blob);
+
+        // Create an Anchor Element (`<a>`)a hidden link element to trigger the download.
+        final anchor = html.AnchorElement(href: url)
+          // Set filename
+          ..setAttribute("download", "sawan_cv.pdf")
+          ..click();
+
+        //Revoke the Object URL
+        html.Url.revokeObjectUrl(url);
+        // print("File Download initiated.");
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("CV Downloaded!"))
+        );
+
+      } catch (e) {
+        print('Error downloading File: $e');
+      }
+    }
 
     return BackgroundContainer(
       child: Padding(
@@ -34,7 +72,7 @@ class AboutScreen extends StatelessWidget {
                       ),
                       SizedBox(height: dSize.height * 0.02),
                       Text(
-                        'I\'m a passionate Flutter developer, and I\'m very dedicated to my work. With a strong background in computer science and a keen interest in volunteering, I strive to build applications that make a difference.',
+                        'I\'m a passionate Web & Mobile Application developer, and I\'m very dedicated to my work. With a strong background in computer science and a keen interest in volunteering, I strive to build applications that make a difference.',
                         textAlign: TextAlign.justify,
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.inversePrimary,
@@ -108,9 +146,7 @@ class AboutScreen extends StatelessWidget {
                       ),
                       SizedBox(height: dSize.height * 0.02),
                       ElevatedButton.icon(
-                        onPressed: () {
-                          // Add download CV functionality
-                        },
+                        onPressed: downloadCV,
                         icon: const Icon(Icons.download),
                         label: const Text('Download CV'),
                       ),
